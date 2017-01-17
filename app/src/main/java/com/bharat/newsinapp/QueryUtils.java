@@ -1,6 +1,5 @@
 package com.bharat.newsinapp;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;

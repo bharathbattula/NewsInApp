@@ -58,35 +58,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         return view;
     }
-  /*  class ImageAsync extends AsyncTask<String,Void,Bitmap>{
 
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-                  if (bitmap!=null){
-                      imageView.setImageBitmap(b);
-                  }
-
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... params) {
-
-
-            URL url = null;
-            try {
-                url = new URL(params[0]);
-                InputStream is = new BufferedInputStream(url.openStream());
-                b = BitmapFactory.decodeStream(is);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return b;
-        }
-    }
-    */
 
 
 }
