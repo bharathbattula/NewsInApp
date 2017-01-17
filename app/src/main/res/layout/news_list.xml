@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight">
+
+ <ImageView
+     android:layout_width="80dp"
+     android:layout_height="match_parent"
+     android:src="@mipmap/ic_launcher"
+     android:id="@+id/imageView"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="2dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Live: Trump and Alibaba's Jack Ma plan to create 1 million US jobs"
+        android:maxLines="2"
+        android:textSize="18sp"
+        android:id="@+id/title"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/postDate"
+        tools:text="15/12/2016"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:textSize="12sp"
+        android:textColor="#c10d0d0d"
+        />
+</LinearLayout>
+
+
+
+</LinearLayout>
