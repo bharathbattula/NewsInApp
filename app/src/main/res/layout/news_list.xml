@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight">
+    android:layout_height="80dp"
+    android:layout_marginBottom="2dp"
+    >
 
  <ImageView
-     android:layout_width="80dp"
+     android:layout_width="100dp"
      android:layout_height="match_parent"
+     android:layout_marginRight="5dp"
      android:src="@mipmap/ic_launcher"
      android:id="@+id/imageView"/>
 <LinearLayout
@@ -20,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Live: Trump and Alibaba's Jack Ma plan to create 1 million US jobs"
-        android:maxLines="2"
+        android:maxLines="3"
         android:textSize="18sp"
         android:id="@+id/title"
         android:textColor="#000"

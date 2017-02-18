@@ -88,35 +88,35 @@ public class SportsActivity extends AppCompatActivity implements NavigationView.
         });
     }
 
-    @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.menu_layout,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_entertainment:
-                startActivity(new Intent(this,EntertainmentActivity.class));
-                break;
-            case R.id.menu_science:
-                startActivity(new Intent(this,ScienceActivity.class));
-                break;
-            case R.id.menu_business:
-                startActivity(new Intent(this,MainActivity.class));
-                break;
-            case R.id.menu_technology:
-                startActivity(new Intent(this,TechnologyAvtivity.class));
-                break;
+       @Override
+       public boolean onOptionsItemSelected(MenuItem item) {
+           switch (item.getItemId()){
+               case R.id.menu_entertainment:
+                   startActivity(new Intent(this,EntertainmentActivity.class));
+                   break;
+               case R.id.menu_science:
+                   startActivity(new Intent(this,ScienceActivity.class));
+                   break;
+               case R.id.menu_business:
+                   startActivity(new Intent(this,MainActivity.class));
+                   break;
+               case R.id.menu_technology:
+                   startActivity(new Intent(this,TechnologyAvtivity.class));
+                   break;
 
-        }
-        if (toggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+           }
+           if (toggle.onOptionsItemSelected(item)){
+               return true;
+           }
+           return super.onOptionsItemSelected(item);
+       }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -124,21 +124,26 @@ public class SportsActivity extends AppCompatActivity implements NavigationView.
             case R.id.menu_business:
                 Toast.makeText(this, "Business", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,MainActivity.class));
+                finish();
                 break;
             case R.id.menu_entertainment:
                 Toast.makeText(this, "Entertainment", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,EntertainmentActivity.class));
+                finish();
                 break;
             case R.id.menu_science:
                 Toast.makeText(this, "Science", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,ScienceActivity.class));
+                finish();
                 break;
             case R.id.menu_sports:
                 Toast.makeText(this, "Sports", Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.menu_technology:
                 Toast.makeText(this, "Technology", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,TechnologyAvtivity.class));
+                finish();
                 break;
 
         }

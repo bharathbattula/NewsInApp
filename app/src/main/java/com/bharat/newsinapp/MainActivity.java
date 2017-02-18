@@ -90,8 +90,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 News currentNews=adapter.getItem(position);
+                String title=currentNews.getTitle();
+                String decribe=currentNews.getDescription();
+                String imageUrl=currentNews.getUrlToImage();
                 Uri url=Uri.parse(currentNews.getUrl());
-                startActivity(new Intent(Intent.ACTION_VIEW,url));
+                String uri=currentNews.getUrl();
+                Intent intent=new Intent(getApplicationContext(),DetailedActivity.class);
+                intent.putExtra("titile",title);
+                intent.putExtra("description",decribe);
+                intent.putExtra("urlToImage",imageUrl);
+                intent.putExtra("uri",uri);
+                startActivity(intent);
             }
         });
 

@@ -123,6 +123,7 @@ public class EntertainmentActivity extends AppCompatActivity implements Navigati
             case R.id.menu_business:
                 Toast.makeText(this, "Business", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,MainActivity.class));
+                finish();
                 break;
             case R.id.menu_entertainment:
                 Toast.makeText(this, "Entertainment", Toast.LENGTH_SHORT).show();
@@ -130,14 +131,17 @@ public class EntertainmentActivity extends AppCompatActivity implements Navigati
             case R.id.menu_science:
                 Toast.makeText(this, "Science", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,ScienceActivity.class));
+                finish();
                 break;
             case R.id.menu_sports:
                 Toast.makeText(this, "Sports", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,SportsActivity.class));
+                finish();
                 break;
             case R.id.menu_technology:
                 Toast.makeText(this, "Technology", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this,TechnologyAvtivity.class));
+                finish();
                 break;
 
         }
