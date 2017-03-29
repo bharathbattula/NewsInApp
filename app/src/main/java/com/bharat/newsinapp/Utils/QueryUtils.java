@@ -1,6 +1,9 @@
-package com.bharat.newsinapp;
+package com.bharat.newsinapp.Utils;
 
 import android.util.Log;
+
+import com.bharat.newsinapp.Fragments.BusinessFragment;
+import com.bharat.newsinapp.Helper.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +25,7 @@ import java.util.List;
  */
 
 public final class QueryUtils {
-    private static final String LOG_TAG =MainActivity.class.getName();
+    private static final String LOG_TAG =BusinessFragment.class.getName();
 
     private QueryUtils(){
 

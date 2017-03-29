@@ -30,16 +30,7 @@
         android:textColor="#000"
         />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/postDate"
-        tools:text="15/12/2016"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:textSize="12sp"
-        android:textColor="#c10d0d0d"
-        />
+
 </LinearLayout>
 
 

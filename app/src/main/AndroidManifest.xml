@@ -20,19 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EntertainmentActivity"
-            android:label="@string/entertainment_activity" />
-        <activity
-            android:name=".ScienceActivity"
-            android:label="@string/science_activity" />
-        <activity
-            android:name=".SportsActivity"
-            android:label="@string/sports_activity" />
-        <activity
-            android:name=".TechnologyAvtivity"
-            android:label="@string/technology_activity" />
-        <activity android:name=".DetailedActivity"></activity>
+        <activity android:name=".DetailedActivity"
+            android:theme="@style/NoActionBarStyle"
+            android:label=""
+            />
+        <activity android:name=".Info"></activity>
     </application>
 
 </manifest>

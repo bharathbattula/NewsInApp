@@ -1,63 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout"
-    tools:context=".MainActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_tab_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <ListView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/newsList"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context="com.bharat.newsinapp.MainActivity">
 
-    </ListView>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/no_internet_layout"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="invisible">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/no_internet_icon"/>
-    <TextView
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv"
-        android:textSize="25sp"
-        android:text="No Internet"/>
-    </LinearLayout>
-    <ProgressBar
-        android:id="@+id/progressSpinner"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-
-        android:layout_height="wrap_content" />
-</RelativeLayout>
-<android.support.design.widget.NavigationView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    app:menu="@menu/menu_layout"
-    app:itemBackground="@drawable/pressed"
-    app:headerLayout="@layout/header_lauout"
-    android:layout_gravity="start"
-    android:id="@+id/navigationView">
-
-</android.support.design.widget.NavigationView>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
-</android.support.v4.widget.DrawerLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabGravity="fill"/>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+
+
+
+</android.support.design.widget.CoordinatorLayout>

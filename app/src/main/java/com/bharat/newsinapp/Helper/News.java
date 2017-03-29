@@ -1,4 +1,4 @@
-package com.bharat.newsinapp;
+package com.bharat.newsinapp.Helper;
 
 /**
  * Created by Bharat on 1/10/2017.

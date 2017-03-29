@@ -1,8 +1,16 @@
 <resources>
-    <string name="app_name">NewsInApp</string>
-    <string name="technology_activity">Technology</string>
-    <string name="sports_activity">Sports</string>
-    <string name="science_activity">Science</string>
-    <string name="entertainment_activity">Entertainment</string>
-    <string name="business_Activity">Business</string>
+    <string name="app_name">NewsIn</string>
+    <string name="technology_fragment">Technology</string>
+    <string name="sports_fragment">Sports</string>
+    <string name="science_fragment">Science</string>
+    <string name="entertainment_fragment">Entertainment</string>
+    <string name="business_fragment">Business</string>
+
+    <string name="url_with_apikey">"YOUR_API-KEY_COMES_HERE"</string>
+    <string name="sort">"sortBy=top"</string>
+    <string name="business_source">"source=cnbc"</string>
+    <string name="entertainment_source">"source=the-lad-bible"</string>
+    <string name="science_source">"source=national-geographic"</string>
+    <string name="sports_source">"source=fox-sports"</string>
+    <string name="technology_source">"source=the-verge"</string>
 </resources>
