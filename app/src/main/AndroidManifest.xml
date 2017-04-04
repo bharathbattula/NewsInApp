@@ -20,11 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailedActivity"
-            android:theme="@style/NoActionBarStyle"
+        <activity
+
+            android:name=".DetailedActivity"
             android:label=""
-            />
-        <activity android:name=".Info"></activity>
+            android:theme="@style/NoActionBarStyle" />
+        <activity android:name=".Info" />
+        <activity android:name=".BrowserActivity"
+                        android:theme="@style/NoActionBarStyle"
+            ></activity>
     </application>
 
 </manifest>

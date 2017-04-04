@@ -96,7 +96,7 @@ public class BusinessFragment extends Fragment  {
                 String imageUrl=currentNews.getUrlToImage();
                 String uri=currentNews.getUrl();
                 Intent intent=new Intent(getContext(),DetailedActivity.class);
-                intent.putExtra("titile",title);
+                intent.putExtra("title",title);
                 intent.putExtra("description",decribe);
                 intent.putExtra("urlToImage",imageUrl);
                 intent.putExtra("uri",uri);

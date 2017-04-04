@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.bharat.newsinapp.R;
 import com.bumptech.glide.Glide;
-
-
 import java.util.List;
+import java.text.*;
+import java.util.*;
 
 
 /**
@@ -26,7 +26,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
     TextView title;
     ImageView imageView;
-
+    String time;
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,12 +36,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
         News currentNews=getItem(position);
         title= (TextView) view.findViewById(R.id.title);
-
         imageView= (ImageView) view.findViewById(R.id.imageView);
         String imageUrl=currentNews.getUrlToImage();
         title.setText(currentNews.getTitle());
 
         Glide.with(getContext()).load(imageUrl).into(imageView);
+        time=currentNews.getDate();
 
 
         return view;

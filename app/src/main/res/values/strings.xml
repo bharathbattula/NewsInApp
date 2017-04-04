@@ -6,11 +6,12 @@
     <string name="entertainment_fragment">Entertainment</string>
     <string name="business_fragment">Business</string>
 
-    <string name="url_with_apikey">"YOUR_API-KEY_COMES_HERE"</string>
+    <string name="url_with_apikey">"https://newsapi.org/v1/articles?apiKey=5bfecae129c44fa389435196ec54adf1"</string>
     <string name="sort">"sortBy=top"</string>
     <string name="business_source">"source=cnbc"</string>
     <string name="entertainment_source">"source=the-lad-bible"</string>
     <string name="science_source">"source=national-geographic"</string>
     <string name="sports_source">"source=fox-sports"</string>
     <string name="technology_source">"source=the-verge"</string>
+    <string name="info">This app Displaying News Data from "https://newsapi.org/". News API is a simple and easy-to-use API that returns JSON metadata for the headlines currently published on a range of news sources and blogs.</string>
 </resources>
