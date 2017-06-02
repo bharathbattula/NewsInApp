@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.widget.ProgressBar;
 import com.bharat.newsinapp.DetailedActivity;
 import com.bharat.newsinapp.Helper.News;
 import com.bharat.newsinapp.Helper.NewsAdapter;
+import com.bharat.newsinapp.Helper.NewsLoader;
 import com.bharat.newsinapp.Utils.QueryUtils;
 import com.bharat.newsinapp.R;
 
@@ -28,7 +31,7 @@ import java.util.List;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class TechnologyFragment extends Fragment {
+public class TechnologyFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<News>> {
 
     NewsAdapter adapter;
     ListView listNews;
@@ -36,6 +39,7 @@ public class TechnologyFragment extends Fragment {
     LinearLayout no_internet_layput;
 
     private String REQUEST_URL;
+    private final int NEWS_LOADER_ID=0;
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
@@ -62,8 +66,8 @@ public class TechnologyFragment extends Fragment {
 
         if (isNetworkActive){
 
-            TechnologyFragment.NewsAsync newsAsync=new TechnologyFragment.NewsAsync();
-            newsAsync.execute(REQUEST_URL);
+
+            getLoaderManager().initLoader(NEWS_LOADER_ID,null,this);
         }else {
             progressSpinner.setVisibility(GONE);
             no_internet_layput.setVisibility(VISIBLE);
@@ -100,26 +104,24 @@ public class TechnologyFragment extends Fragment {
         return view;
     }
 
-    private class NewsAsync extends AsyncTask<String,Void,List<News>> {
-
-        @Override
-        protected List<News> doInBackground(String... params) {
-            if (params.length < 1 || params[0]==null){
-                return null;
-            }
-            List<News> newses= QueryUtils.fetchNewsData(params[0]);
-            return newses;
-        }
-        @Override
-        protected void onPostExecute(List<News> newses) {
-            progressSpinner.setVisibility(GONE);
-
-            adapter.clear();
-            if (newses !=null && !newses.isEmpty()){
-                adapter.addAll(newses);
-            }
-        }
-
-
+    @Override
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        return new NewsLoader(getContext(),REQUEST_URL);
     }
+
+    @Override
+    public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
+        progressSpinner.setVisibility(GONE);
+        adapter.clear();
+        if (data!=null && !data.isEmpty()){
+            adapter.addAll(data);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<News>> loader) {
+        adapter.clear();
+    }
+
+
 }

@@ -33,7 +33,7 @@ public final class QueryUtils {
 
 
     public static List<News> fetchNewsData(String requestedURL){
-
+        Log.d("Loader","Query utils Fetch News Data method called");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

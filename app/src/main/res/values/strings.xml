@@ -6,7 +6,7 @@
     <string name="entertainment_fragment">Entertainment</string>
     <string name="business_fragment">Business</string>
 
-    <string name="url_with_apikey">"https://newsapi.org/v1/articles?apiKey=YOUR_API-KEY_COMES_HERE"</string>
+    <string name="url_with_apikey">"https://newsapi.org/v1/articles?apiKey=5bfecae129c44fa389435196ec54adf1"</string>
     <string name="sort">"sortBy=top"</string>
     <string name="business_source">"source=cnbc"</string>
     <string name="entertainment_source">"source=the-lad-bible"</string>
