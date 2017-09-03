@@ -13,16 +13,21 @@ import com.bharat.newsinapp.Utils.QueryUtils;
 
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
     private String mUrl;
+    private List<News> newsList;
+
     public NewsLoader(Context context,String url){
         super(context);
         mUrl=url;
-
     }
 
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
+        if (newsList != null){
+            deliverResult(newsList);
+        }else {
         forceLoad();
+        }
     }
 
     @Override
@@ -30,7 +35,11 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         if (mUrl==null){
             return null;
         }
-        List<News> news= QueryUtils.fetchNewsData(mUrl);
-        return news;
+        try {
+            List<News> news= QueryUtils.fetchNewsData(mUrl);
+            return news;
+        }catch (Exception e){
+            return null;
+        }
     }
 }
