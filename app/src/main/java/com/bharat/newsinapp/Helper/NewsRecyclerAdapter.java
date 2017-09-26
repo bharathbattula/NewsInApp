@@ -1,5 +1,6 @@
 package com.bharat.newsinapp.Helper;
 
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.content.*;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bharat.newsinapp.MainActivity;
 import com.bharat.newsinapp.R;
 import com.bumptech.glide.Glide;
 
@@ -21,11 +23,12 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
 
     private  List<News> newsList;
     private Context context;
+    private Cursor mCursor;
 
     private final NewsRecyclerAdapterOnClickHandler mClickHandler;
 
     public interface NewsRecyclerAdapterOnClickHandler{
-        void onClick(News news);
+        void onClick(int newsId);
     }
 
     public NewsRecyclerAdapter(Context context,NewsRecyclerAdapterOnClickHandler clickHandler){
@@ -50,20 +53,23 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
 
     @Override
     public void onBindViewHolder(NewsViewHolder newsViewHolder, int position) {
-        News newsItemData = newsList.get(position);
-        newsViewHolder.mTextView.setText(newsItemData.getTitle());
+        mCursor.moveToPosition(position);
+
+        String title = mCursor.getString(MainActivity.INDEX_NEWS_TITLE);
+        String imageUrl = mCursor.getString(MainActivity.INDEX_NEWS_IMAGE);
+        newsViewHolder.mTextView.setText(title);
         ImageView imageView = newsViewHolder.mImageView;
-        Glide.with(getContext()).load(newsItemData.getUrlToImage()).into(imageView);
+        Glide.with(getContext()).load(imageUrl).into(imageView);
     }
 
     @Override
     public int getItemCount() {
-        if (newsList == null) return 0;
-        return newsList.size();
+        if (mCursor == null) return 0;
+        return mCursor.getCount();
     }
 
-    public void setNewsData(List<News> newsData){
-        newsList=newsData;
+    public void setNewsData(Cursor cursor){
+        mCursor = cursor;
         notifyDataSetChanged();
     }
 
@@ -82,8 +88,9 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            News newsItem = newsList.get(adapterPosition);
-            mClickHandler.onClick(newsItem);
+            mCursor.moveToPosition(adapterPosition);
+            int id = mCursor.getInt(MainActivity.INDEX_NEWS_ID);
+            mClickHandler.onClick(id);
         }
     }
 }

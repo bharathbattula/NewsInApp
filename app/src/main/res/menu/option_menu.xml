@@ -2,12 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    \
-    <item android:title="Info"
+    <item android:title="Settings"
         android:id="@+id/info_menu"
-        android:icon="@drawable/ic_info_outline_24dp"
         android:visible="true"
-        app:showAsAction="always"
+        app:showAsAction="never"
         />
 
 </menu>

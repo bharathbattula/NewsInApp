@@ -5,7 +5,7 @@ package com.bharat.newsinapp.Helper;
  */
 
 public class News {
-private String title;
+    private String title;
     private String description;
     private String url;
     private String urlToImage;

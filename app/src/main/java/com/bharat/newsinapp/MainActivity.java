@@ -15,16 +15,37 @@ import com.bharat.newsinapp.Fragments.ScienceFragment;
 import com.bharat.newsinapp.Fragments.SportsFragment;
 import com.bharat.newsinapp.Fragments.TechnologyFragment;
 import com.bharat.newsinapp.Helper.ViewPagerAdapter;
+import com.bharat.newsinapp.data.NewsContract;
+import com.bharat.newsinapp.sync.NewsSyncService;
+import com.bharat.newsinapp.sync.NewsSyncUtils;
 
+import android.content.*;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    public static final String[] MAIN_PROJECTION={
+                NewsContract.NewsEntry._ID,
+                NewsContract.NewsEntry.COLUMN_TITLE,
+                NewsContract.NewsEntry.COLUMN_DESCRIPTION,
+                NewsContract.NewsEntry.COLUMN_IMAGE,
+                NewsContract.NewsEntry.COLUMN_URL_TO_SOURCE,
+                NewsContract.NewsEntry.COLUMN_DATE
+    };
+    public static int INDEX_NEWS_ID = 0;
+    public static int INDEX_NEWS_TITLE = 1;
+    public static int INDEX_NEWS_DESCRIPTION = 2;
+    public static int INDEX_NEWS_IMAGE = 3;
+    public static int INDEX_NEWS_SOURCE = 4;
+    public static int INDEX_NEWS_DATE = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         tabLayout= (TabLayout) findViewById(R.id.tabs);
@@ -33,8 +54,18 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPagerAdapter(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
+        NewsSyncUtils.initialize(this);
     }
 
+    private void insertToDatabase(){
+        ContentValues values = new ContentValues();
+        values.put(MAIN_PROJECTION[INDEX_NEWS_TITLE],"Hello");
+        values.put(MAIN_PROJECTION[INDEX_NEWS_DESCRIPTION],"This is me");
+        values.put(MAIN_PROJECTION[INDEX_NEWS_IMAGE],"http://smalldata.io/img/sdl_logo.png");
+        values.put(MAIN_PROJECTION[INDEX_NEWS_SOURCE],"http://timesofindia.indiatimes.com/");
+        values.put(MAIN_PROJECTION[INDEX_NEWS_DATE],"25/4/2016");
+        getContentResolver().insert(NewsContract.NewsEntry.CONTENT_URI,values);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.info_menu){
-            startActivity(new Intent(getApplicationContext(),Info.class));
+            startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

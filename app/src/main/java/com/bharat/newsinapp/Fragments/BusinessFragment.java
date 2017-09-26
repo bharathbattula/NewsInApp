@@ -1,13 +1,23 @@
 package com.bharat.newsinapp.Fragments;
 
 
+import android.content.Intent;
+
+import android.net.Uri;
 import android.os.Bundle;
+
 
 import android.util.Log;
 
-import com.bharat.newsinapp.R;
+import com.bharat.newsinapp.DetailedActivity;
 
-public class BusinessFragment extends BaseFragment{
+import com.bharat.newsinapp.Helper.NewsRecyclerAdapter;
+
+import com.bharat.newsinapp.data.NewsContract;
+
+
+
+public class BusinessFragment extends BaseFragment implements NewsRecyclerAdapter.NewsRecyclerAdapterOnClickHandler{
 
 
     private String TAG=getClass().getName();
@@ -15,11 +25,18 @@ public class BusinessFragment extends BaseFragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        REQUEST_URL=  getResources().getString(R.string.url_with_apikey)+"&"+getResources().getString(R.string.sort)+"&"+getResources().getString(R.string.business_source);
+        CONTENT_QUERY_URI = NewsContract.NewsEntry.CONTENT_URI;
+        newsRecyclerAdapter = new NewsRecyclerAdapter(getContext(),this);
         Log.d(TAG,"onCreate()");
     }
 
-
+    @Override
+    public void onClick(int newsId) {
+        Intent intent=new Intent(getContext(),DetailedActivity.class);
+        Uri uri = NewsContract.NewsEntry.CONTENT_URI.buildUpon().appendPath(String.valueOf(newsId)).build();
+        intent.setData(uri);
+        startActivity(intent);
+    }
 
    /* private class NewsAsync extends AsyncTask<String,Void,List<News>>{
 

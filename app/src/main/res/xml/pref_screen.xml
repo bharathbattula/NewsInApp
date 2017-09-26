@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width= "match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/show_notification_by_defalt"
+        android:key="switch_preference_1"
+        android:title="@string/pref_notification_label"
+        android:summaryOn="@string/pref_notification_summay_on"
+        android:summaryOff="@string/pref_notification_summary_off"/>
+</PreferenceScreen>

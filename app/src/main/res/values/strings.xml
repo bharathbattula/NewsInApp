@@ -5,13 +5,25 @@
     <string name="science_fragment">Science</string>
     <string name="entertainment_fragment">Entertainment</string>
     <string name="business_fragment">Business</string>
-
-    <string name="url_with_apikey">"https://newsapi.org/v1/articles?apiKey=YOUR_API-KEY_COMES_HERE"</string>
-    <string name="sort">"sortBy=top"</string>
-    <string name="business_source">"source=cnbc"</string>
-    <string name="entertainment_source">"source=the-lad-bible"</string>
-    <string name="science_source">"source=national-geographic"</string>
-    <string name="sports_source">"source=fox-sports"</string>
-    <string name="technology_source">"source=the-verge"</string>
+    <string name = "base_url">https://newsapi.org/v1/articles?</string>
+    <string name = "api_key">YOUR_API-KEY_COMES_HERE</string>
+    <string name="sort">top</string>
+    <string name="business_source">cnbc</string>
+    <string name="entertainment_source">the-lad-bible</string>
+    <string name="science_source">national-geographic</string>
+    <string name="sports_source">bbc-sport"</string>
+    <string name="technology_source">the-verge</string>
     <string name="info">This app Displaying News Data from "https://newsapi.org/". News API is a simple and easy-to-use API that returns JSON metadata for the headlines currently published on a range of news sources and blogs.</string>
+
+    <!-- Notification-->
+    <string name="pref_notification_label">Notification</string>
+    <string name="pref_notification_key" translatable="false">enable_notification</string>
+
+    <string name="pref_notification_summay_on">Enabled</string>
+    <string name="pref_notification_summary_off">Disabled</string>
+    <string name="pref_last_notification">last_notification</string>
+
+
 </resources>
+
+

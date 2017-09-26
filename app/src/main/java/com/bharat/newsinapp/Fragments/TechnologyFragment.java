@@ -1,13 +1,21 @@
 package com.bharat.newsinapp.Fragments;
 
+
+import android.content.Intent;
+
+import android.net.Uri;
 import android.os.Bundle;
+
 
 import android.util.Log;
 
-import com.bharat.newsinapp.R;
+import com.bharat.newsinapp.DetailedActivity;
+import com.bharat.newsinapp.Helper.NewsRecyclerAdapter;
+
+import com.bharat.newsinapp.data.NewsContract;
 
 
-public class TechnologyFragment extends BaseFragment {
+public class TechnologyFragment extends BaseFragment implements NewsRecyclerAdapter.NewsRecyclerAdapterOnClickHandler {
 
     private String TAG=getClass().getName();
 
@@ -15,9 +23,16 @@ public class TechnologyFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        REQUEST_URL=  getResources().getString(R.string.url_with_apikey)+"&"+getResources().getString(R.string.sort)+"&"+getResources().getString(R.string.technology_source);
+        CONTENT_QUERY_URI = NewsContract.TechnologyEntry.CONTENT_URI;
+        newsRecyclerAdapter = new NewsRecyclerAdapter(getContext(),this);
         Log.d(TAG,"onCreate()");
     }
 
-
+    @Override
+    public void onClick(int newsId) {
+        Intent intent=new Intent(getContext(),DetailedActivity.class);
+        Uri uri = NewsContract.TechnologyEntry.CONTENT_URI.buildUpon().appendPath(String.valueOf(newsId)).build();
+        intent.setData(uri);
+        startActivity(intent);
+    }
 }

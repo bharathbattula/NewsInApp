@@ -25,10 +25,24 @@
             android:name=".DetailedActivity"
             android:label=""
             android:theme="@style/NoActionBarStyle" />
-        <activity android:name=".Info" />
+        <activity android:name=".SettingsActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
         <activity android:name=".BrowserActivity"
                         android:theme="@style/NoActionBarStyle"
             ></activity>
+        <provider
+            android:exported="false"
+            android:authorities="com.bharat.newsinapp"
+            android:name=".data.NewsProvider"/>
+        <service android:name=".sync.NewsSyncService"
+            android:exported="false"/>
+        <service android:name=".sync.NewsSyncFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
     </application>
-
 </manifest>

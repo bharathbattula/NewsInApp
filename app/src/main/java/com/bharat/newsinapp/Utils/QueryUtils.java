@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.bharat.newsinapp.Fragments.BusinessFragment;
 import com.bharat.newsinapp.Helper.News;
+import com.bharat.newsinapp.data.NewsContract;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +20,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
+import android.content.*;
 /**
  * Created by Bharat on 1/10/2017.
  */
@@ -31,6 +32,12 @@ public final class QueryUtils {
 
     }
 
+    private static final String JSON_ARTICLE_ARRAY = "articles";
+    private static final String JSON_TITLE =  "title";
+    private static final String JSON_DESCRIPTION = "description";
+    private static final String JSON_URL_TO_IMAGE = "urlToImage";
+    private static final String JSON_URL_TO_SOURCE = "url";
+    private static final String JSON_PUBLISHED_DATE = "publishedAt";
 
     public static List<News> fetchNewsData(String requestedURL){
         Log.d("Loader","Query utils Fetch News Data method called");
@@ -55,9 +62,9 @@ public final class QueryUtils {
 
     }
 
-    private static String makeHttpRequest(URL url) throws IOException {
-    String jsonResponse="";
-        if (url==null){
+    public static String makeHttpRequest(URL url) throws IOException {
+    String jsonResponse = null;
+        if (url == null){
             return null;
         }
         HttpURLConnection conn=null;
@@ -109,7 +116,7 @@ public final class QueryUtils {
         return output.toString();
     }
 
-    private static URL createUrl(String requestedURL) {
+    public static URL createUrl(String requestedURL) {
             URL url=null;
         try {
             url=new URL(requestedURL);
@@ -147,6 +154,35 @@ public final class QueryUtils {
 
 
         return news;
+    }
+
+    public static ContentValues[] extractContentValuesFromResponse(String jsonString) throws JSONException {
+
+        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONArray jsonArray = jsonObject.getJSONArray(JSON_ARTICLE_ARRAY);
+
+        ContentValues[] contentValues = new ContentValues[jsonArray.length()];
+
+        for (int i = 0; i < jsonArray.length() ; i++){
+
+            JSONObject currentObject = jsonArray.getJSONObject(i);
+            ContentValues value = new ContentValues();
+
+            String title=currentObject.getString(JSON_TITLE);
+            String description=currentObject.getString(JSON_DESCRIPTION);
+            String urlToImage=currentObject.getString(JSON_URL_TO_IMAGE);
+            String postingDate=currentObject.getString(JSON_PUBLISHED_DATE);
+            String url=currentObject.getString(JSON_URL_TO_SOURCE);
+
+            value.put(NewsContract.NewsEntry.COLUMN_TITLE,title);
+            value.put(NewsContract.NewsEntry.COLUMN_DESCRIPTION,description);
+            value.put(NewsContract.NewsEntry.COLUMN_IMAGE,urlToImage);
+            value.put(NewsContract.NewsEntry.COLUMN_URL_TO_SOURCE,url);
+            value.put(NewsContract.NewsEntry.COLUMN_DATE,postingDate);
+
+            contentValues[i] = value;
+        }
+        return contentValues;
     }
 
 }
